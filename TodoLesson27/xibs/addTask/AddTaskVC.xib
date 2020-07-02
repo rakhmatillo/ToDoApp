@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,6 +14,7 @@
                 <outlet property="choosenDateLbl" destination="HTs-A4-M8c" id="e51-Nc-fJe"/>
                 <outlet property="collectionView" destination="Mu4-aL-xrj" id="Vb9-3w-XMq"/>
                 <outlet property="datePicker" destination="SdE-fd-Z6x" id="WSt-cS-3JF"/>
+                <outlet property="descLTextFld" destination="9VP-EI-bUC" id="fLV-Qz-7S9"/>
                 <outlet property="plusImg" destination="dQy-6Y-luW" id="o3E-V6-D2T"/>
                 <outlet property="taskTextFld" destination="8NJ-87-45a" id="zjP-gx-x9g"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -28,10 +29,10 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardView" translatesAutoresizingMaskIntoConstraints="NO" id="m7X-Nk-oyq">
-                            <rect key="frame" x="0.0" y="395" width="414" height="457"/>
+                            <rect key="frame" x="0.0" y="280" width="414" height="572"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0L-bK-I27" userLabel="AddView">
-                            <rect key="frame" x="167" y="355" width="80" height="80"/>
+                            <rect key="frame" x="167" y="240" width="80" height="80"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dQy-6Y-luW">
                                     <rect key="frame" x="20" y="22" width="40" height="36"/>
@@ -73,18 +74,23 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Add new task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHm-Sl-3Bh">
-                            <rect key="frame" x="155.5" y="455" width="103.5" height="20.5"/>
+                            <rect key="frame" x="155.5" y="340" width="103.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="add task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8NJ-87-45a">
-                            <rect key="frame" x="20" y="495.5" width="374" height="50"/>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8NJ-87-45a">
+                            <rect key="frame" x="20" y="380.5" width="374" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="SF5-sC-5hb"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9VP-EI-bUC">
+                            <rect key="frame" x="20" y="445.5" width="374" height="100"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <textInputTraits key="textInputTraits"/>
                         </textField>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pfl-Wm-chw">
                             <rect key="frame" x="20" y="565.5" width="374" height="61"/>
@@ -177,20 +183,24 @@
                     <constraints>
                         <constraint firstItem="8NJ-87-45a" firstAttribute="leading" secondItem="yUf-nW-Bj3" secondAttribute="leading" constant="20" id="292-p5-tpN"/>
                         <constraint firstItem="m7X-Nk-oyq" firstAttribute="leading" secondItem="yUf-nW-Bj3" secondAttribute="leading" id="5Rl-m8-70W"/>
+                        <constraint firstItem="9VP-EI-bUC" firstAttribute="top" secondItem="8NJ-87-45a" secondAttribute="bottom" constant="15" id="6sU-wM-xRT"/>
                         <constraint firstAttribute="trailing" secondItem="m7X-Nk-oyq" secondAttribute="trailing" id="FvY-hg-wRG"/>
                         <constraint firstItem="eLX-at-8PA" firstAttribute="top" secondItem="Y9g-hT-Pje" secondAttribute="bottom" constant="30" id="Gev-YF-Nf7"/>
+                        <constraint firstItem="9VP-EI-bUC" firstAttribute="height" secondItem="8NJ-87-45a" secondAttribute="height" multiplier="2" id="JrE-kS-NdO"/>
                         <constraint firstItem="Y9g-hT-Pje" firstAttribute="leading" secondItem="yUf-nW-Bj3" secondAttribute="leading" constant="20" id="KgI-1T-15l"/>
                         <constraint firstItem="pfl-Wm-chw" firstAttribute="leading" secondItem="yUf-nW-Bj3" secondAttribute="leading" constant="20" id="LoB-Or-7Mu"/>
+                        <constraint firstItem="9VP-EI-bUC" firstAttribute="leading" secondItem="yUf-nW-Bj3" secondAttribute="leading" constant="20" id="QwJ-Ew-JzF"/>
                         <constraint firstAttribute="trailing" secondItem="eLX-at-8PA" secondAttribute="trailing" constant="20" id="WQ6-XP-vCj"/>
                         <constraint firstItem="8NJ-87-45a" firstAttribute="top" secondItem="lHm-Sl-3Bh" secondAttribute="bottom" constant="20" id="XpU-Wp-nsz"/>
-                        <constraint firstItem="pfl-Wm-chw" firstAttribute="top" secondItem="8NJ-87-45a" secondAttribute="bottom" constant="20" id="eZC-dh-GC6"/>
                         <constraint firstItem="F0L-bK-I27" firstAttribute="centerX" secondItem="m7X-Nk-oyq" secondAttribute="centerX" id="ghk-Fg-FYM"/>
                         <constraint firstItem="m7X-Nk-oyq" firstAttribute="top" secondItem="xOs-Lb-sup" secondAttribute="bottom" constant="-40" id="hT6-qu-otl"/>
+                        <constraint firstAttribute="trailing" secondItem="9VP-EI-bUC" secondAttribute="trailing" constant="20" id="hmh-Si-bQp"/>
                         <constraint firstAttribute="trailing" secondItem="Y9g-hT-Pje" secondAttribute="trailing" constant="20" id="mV1-mW-cCo"/>
                         <constraint firstAttribute="bottom" secondItem="m7X-Nk-oyq" secondAttribute="bottom" id="noX-FG-mex"/>
                         <constraint firstItem="lHm-Sl-3Bh" firstAttribute="top" secondItem="F0L-bK-I27" secondAttribute="bottom" constant="20" id="nqM-sk-WDm"/>
                         <constraint firstItem="Y9g-hT-Pje" firstAttribute="top" secondItem="pfl-Wm-chw" secondAttribute="bottom" constant="10" id="o0E-ej-LgB"/>
                         <constraint firstAttribute="trailing" secondItem="pfl-Wm-chw" secondAttribute="trailing" constant="20" id="qJa-CU-60G"/>
+                        <constraint firstItem="pfl-Wm-chw" firstAttribute="top" secondItem="9VP-EI-bUC" secondAttribute="bottom" constant="20" id="qn3-JM-ugd"/>
                         <constraint firstAttribute="trailing" secondItem="8NJ-87-45a" secondAttribute="trailing" constant="20" id="rIj-Py-MaO"/>
                         <constraint firstItem="lHm-Sl-3Bh" firstAttribute="centerX" secondItem="yUf-nW-Bj3" secondAttribute="centerX" id="wgq-pn-Em5"/>
                         <constraint firstItem="eLX-at-8PA" firstAttribute="leading" secondItem="yUf-nW-Bj3" secondAttribute="leading" constant="20" id="wqE-uB-XGq"/>
@@ -212,6 +222,6 @@
     </objects>
     <resources>
         <image name="cardView" width="375" height="691"/>
-        <image name="plus" catalog="system" width="64" height="56"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>

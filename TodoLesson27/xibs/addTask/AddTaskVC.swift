@@ -23,6 +23,7 @@ class AddTaskVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cardImageView: UIImageView!
     @IBOutlet weak var plusImg: UIImageView!
     @IBOutlet weak var taskTextFld: UITextField!
+    @IBOutlet weak var descLTextFld: UITextField!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -34,7 +35,7 @@ class AddTaskVC: UIViewController, UITextFieldDelegate {
         collectionView.register(UINib(nibName: "ListCell", bundle: nil), forCellWithReuseIdentifier: "ListCell")
         
         taskTextFld.delegate = self
-        
+        descLTextFld.delegate = self
 
         datePicker.datePickerMode = .dateAndTime
         datePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 0, to: Date())
@@ -58,6 +59,7 @@ class AddTaskVC: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        
     }
     
     
@@ -100,9 +102,8 @@ class AddTaskVC: UIViewController, UITextFieldDelegate {
                 let dateformatter = DateFormatter()
                 dateformatter.dateFormat = "HH':'mm dd '/' MM '/' yyyy"
                 let date = dateformatter.date(from: stringDate)
-                
                 if !self.choosenDateLbl.text!.contains("C"){
-                    let item = TaskDM(id: 0, isDone: false, time: date!, taskTitle: self.taskTextFld.text!, shouldRemaind: false, typeOfTask: list.id)
+                    let item = TaskDM(id: 0, isDone: false, time: date!, taskTitle: self.taskTextFld.text!, taskDesc: self.descLTextFld.text! , shouldRemaind: false, typeOfTask: list.id)
                     self.delegate?.doneWith(task: item)
                 }
                 
@@ -160,6 +161,6 @@ extension AddTaskVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width / 3.5, height: 36)
+        return CGSize(width: self.view.frame.width / 3, height: 50)
     }
 }

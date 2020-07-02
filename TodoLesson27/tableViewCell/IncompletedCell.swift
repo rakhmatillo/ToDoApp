@@ -8,23 +8,32 @@
 
 import UIKit
 protocol RemindProtocol {
-    func remindBtnPressed()
+    func remindBtnPressed(position: Int)
+}
+
+protocol DetailProtocol {
+    func detailBtnPressed(position: Int)
 }
 
 class IncompletedCell: UITableViewCell {
     
     var remindDelegate: RemindProtocol?
+    var detailDelegate: DetailProtocol?
+   
+    var positionOfThisCell = 0
+    
+    
     
     @IBOutlet weak var strikeThroughLine: UIView!
     @IBOutlet weak var isDoneView: UIImageView!
     @IBOutlet weak var tagView: UIView!
     @IBOutlet weak var titleOfTaskLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
-    var isFirst:Bool = false
     
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var remindBtn: UIButton!
     
+    @IBOutlet weak var detailBtn: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
        
@@ -34,19 +43,19 @@ class IncompletedCell: UITableViewCell {
         
     }
     
-    @IBAction func remindBtnPressed(_ sender: UIButton) {
-        isFirst = !isFirst
-        if isFirst{
-            remindBtn.setImage(#imageLiteral(resourceName: "bell"), for: .normal)
-        }else{
-             remindBtn.setImage(#imageLiteral(resourceName: "bell2"), for: .normal)
-        }
-        
-        
-        
-        remindDelegate?.remindBtnPressed()
+    func setRemindImage(img: UIImage){
+        remindBtn.setImage(img, for: .normal)
     }
     
+    @IBAction func remindBtnPressed(_ sender: UIButton) {
+
+        remindDelegate?.remindBtnPressed(position: positionOfThisCell)
+    }
+    
+    
+    @IBAction func detailBtnPressed(_ sender: Any) {
+        detailDelegate?.detailBtnPressed(position: positionOfThisCell)
+    }
 }
 
 
